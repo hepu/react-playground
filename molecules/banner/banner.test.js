@@ -10,10 +10,13 @@ configure({ adapter: new Adapter() });
 
 describe('<Banner />', () => {
   it('renders 2 <p> tags', () => {
-    // const wrapper = shallow(<Banner />);
-    // expect(wrapper.find("p").length).toBe(2);
+    const wrapper = shallow(<Banner />);
+    // This won't work
+    expect(wrapper.find("p").length).not.toBe(2);
+    // This will work
     const renderedWrapper = mount(<Banner />)
     expect(renderedWrapper.find("p").length).toBe(2);
+    // This works for both mount and shallow
     expect(renderedWrapper).toHaveStyleRule('background-color', 'red');
   });
 
